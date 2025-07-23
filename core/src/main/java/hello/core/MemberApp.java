@@ -9,7 +9,10 @@ import hello.core.member.MemberServiceImpl;
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        // 구현 객체의 선택은 appConfig가 담당
+        MemberService memberService = appConfig.memberService();
+//        MemberService memberService = new MemberServiceImpl();
         // Command + Option + v / Ctrl + Alt + v
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
