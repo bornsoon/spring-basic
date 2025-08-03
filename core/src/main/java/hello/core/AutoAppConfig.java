@@ -18,7 +18,8 @@ import org.springframework.context.annotation.FilterType;
 )
 public class AutoAppConfig {
 
-    // 수동 빈 등록이 우선권을 가짐 -> 오버라이딩 되버림 -> 디폴드 설정는 오버라이딩 X
+    // 수동 빈 등록이 우선권을 가짐 -> 오버라이딩 되버림 -> 디폴드 설정은 오버라이딩 X
+    // test는 성공해도 실제로 프로젝트 실행하면 오류 뜸
     @Bean(name="memoryMemberRepository")
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
