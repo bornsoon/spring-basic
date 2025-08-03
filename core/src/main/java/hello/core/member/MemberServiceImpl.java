@@ -9,7 +9,7 @@ public class MemberServiceImpl implements MemberService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
-    // 의존 관계 자동 주입
+    // 의존 관계 자동 주입 - 기본은 타입이 일치하는 빈 주입
     @Autowired  // ac.getBean(MemberRepository.class)
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
