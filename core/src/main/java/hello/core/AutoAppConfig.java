@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -14,4 +17,10 @@ import org.springframework.context.annotation.FilterType;
         Configuration.class)
 )
 public class AutoAppConfig {
+
+    // 수동 빈 등록이 우선권을 가짐 -> 오버라이딩 되버림 -> 디폴드 설정는 오버라이딩 X
+    @Bean(name="memoryMemberRepository")
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
 }
