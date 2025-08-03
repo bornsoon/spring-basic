@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration  // 애플리케이션의 구성(설정) 정보
+//`@Configuration`없이 `@Bean`만 쓸 경우, 싱글톤 보장 안됨!!!!
+// CGLIB 기술 없이 순수한 AppConfig로 스프링 빈에 등록되기 때문에...
+// + return문 안에 있는 memberRepository는 스프링 컨테이너로 관리되지 않음
 public class AppConfig {
 
     // @Bean MemberService 생성 -> new MemoryMemberRepository() 호출
