@@ -25,6 +25,5 @@ public class StatefulService {
 
       // public int getPrice()  <- 없애기
      */
-    }
 
 }
