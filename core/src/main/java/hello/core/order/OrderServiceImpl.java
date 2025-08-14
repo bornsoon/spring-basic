@@ -6,10 +6,13 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
+// final 이 붙은 필드를 모아서 생성자를 자동으로 만들어줌!
 public class OrderServiceImpl implements OrderService {
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -32,13 +35,13 @@ public class OrderServiceImpl implements OrderService {
         // this.discountPolicy = discountPolicy;
     }*/
 
-    /* 생성자 주입 */
+    /* 생성자 주입
     // @Autowired  스프링빈이 생성자가 딱 한개일 때는 자등으로 @Autowired 처리
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        System.out.println("memberRepository (생성자) = " + memberRepository);  // 출력순서: 1
+        System.out.println("`memberRepository (생성자) = " + memberRepository);  // 출력순서: 1
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }
+    }*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
