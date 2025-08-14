@@ -37,7 +37,8 @@ public class OrderServiceImpl implements OrderService {
 
     /* 생성자 주입
     // @Autowired  스프링빈이 생성자가 딱 한개일 때는 자등으로 @Autowired 처리
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         System.out.println("`memberRepository (생성자) = " + memberRepository);  // 출력순서: 1
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
