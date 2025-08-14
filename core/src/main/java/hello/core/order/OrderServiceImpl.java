@@ -20,8 +20,22 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    /* 수정자 주입
     @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository (setter) = " + memberRepository);  //출력순서: 2(3)
+        // this.memberRepository = memberRepository;
+    }
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy (setter) = " + discountPolicy);  //출력순서: 3(2)
+        // this.discountPolicy = discountPolicy;
+    }*/
+
+    /* 생성자 주입 */
+    // @Autowired  스프링빈이 생성자가 딱 한개일 때는 자등으로 @Autowired 처리
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("memberRepository (생성자) = " + memberRepository);  // 출력순서: 1
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
