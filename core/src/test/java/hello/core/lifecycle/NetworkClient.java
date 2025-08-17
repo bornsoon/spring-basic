@@ -1,9 +1,12 @@
 package hello.core.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
+// public class NetworkClient implements InitializingBean, DisposableBean {
 
     private String url;
 
@@ -30,9 +33,23 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close: " + url);
     }
 
+    @PostConstruct
+    public void init() {
+        System.out.println("NetworkClient.init");
+        connect();
+        call("초기화 연결 메시지");
+    }
 
+    @PreDestroy
+    public void close() {
+        System.out.println("NetworkClient.close");
+        disconnect();
+    }
+
+    /*
     // 인터페이스를 사용하는 초기화, 종료 방법은 스프링 초창기에 나온 방법
     // 지금은 다음의 더 나은 방법들이 있어서 거의 사용하지 않는다.
+    // 외부 라이브러리 사용하기 힘듦
     // 빈 생성 후 의존 관계 주입 후
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -46,5 +63,5 @@ public class NetworkClient implements InitializingBean, DisposableBean {
     public void destroy() throws Exception {
         System.out.println("NetworkClient.destroy");
         disconnect();
-    }
+    }*/
 }
