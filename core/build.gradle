@@ -27,6 +27,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	// web 라이브러리 추자
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// Provider
 	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
 
